@@ -1,11 +1,22 @@
-# Collections: Counter, namedtuple, orderedDict, defaultdict, deque
-# Itertools: product, permutations, combinations, accumalate, groupby, and infinite itereations
-from itertools import groupby
+# Errors and Exceptions
+class ValueTooHighError(Exception):
+    pass
 
-persons = [{'name': 'Time', 'age': 25}, {'name': 'Dan', 'age': 25},
-           {'name': 'Lisa', 'age': 27}, {'name': 'Claire', 'age': 38}]
+class ValueTooSmallError(Exception):
+    def __init__(self, message, value):
+        self.message = message
+        self.value = value
 
-a = [1, 2, 3, 4]
-group_obj = groupby(a, key=lambda x: x['age'])
-for key, value in group_obj:
-    print(key, list(value))
+
+
+def test_value(x):
+    if x > 100:
+        raise ValueTooHighError('Value is too high')
+    if x < 5:
+        raise ValueTooSmallError('Value is too small', x)
+try:
+    test_value(1)
+except ValueTooHighError as e:
+    print(e)
+except ValueTooSmallError as e:
+    print(e.message, e.value)
