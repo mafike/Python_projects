@@ -1,12 +1,22 @@
 # Json
+# how t encode and decode an object code
 import json
-person = {"name": "John", "age": 30, "City": "New York", "hasChildren": False, "Titles": ["Engineer","Programmer"]}
-personJSON = json.dumps(person, indent=4)
-print(personJSON)
+class User:
+    def __int__(self, name, age):
+        self.name = name
+        self.age = age
+user = User('Max', 27)
+def encode_user(o):
+    if isinstance(o, User):
+        return{'name': o.name, 'age': o.age, o.__class__.__name__: True}
+    else:
+        raise TypeError('Object of type user is not JSON serializable')
+from json import JSONEncoder
+class UserEncoder(JSONEncoder):
+    def default(self, o):
+        if isinstance(o, User):
+            return {'name': o.name, 'age': o.age, o.__class__.__name__: True }
+        return JSONEncoder.default(self, o)
 
-with open('person.json', 'w') as file:
-    json.dump(person, file, indent=4)
-#Decoding
-with open('personJSON', 'r') as file:
-    person = json.loads(file)
-    print(person)
+userJSON = json.dumps(user, default=encode_user)
+print(userJSON)
