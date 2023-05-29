@@ -1,22 +1,12 @@
-# Errors and Exceptions
-class ValueTooHighError(Exception):
-    pass
+# Json
+import json
+person = {"name": "John", "age": 30, "City": "New York", "hasChildren": False, "Titles": ["Engineer","Programmer"]}
+personJSON = json.dumps(person, indent=4)
+print(personJSON)
 
-class ValueTooSmallError(Exception):
-    def __init__(self, message, value):
-        self.message = message
-        self.value = value
-
-
-
-def test_value(x):
-    if x > 100:
-        raise ValueTooHighError('Value is too high')
-    if x < 5:
-        raise ValueTooSmallError('Value is too small', x)
-try:
-    test_value(1)
-except ValueTooHighError as e:
-    print(e)
-except ValueTooSmallError as e:
-    print(e.message, e.value)
+with open('person.json', 'w') as file:
+    json.dump(person, file, indent=4)
+#Decoding
+with open('personJSON', 'r') as file:
+    person = json.loads(file)
+    print(person)
