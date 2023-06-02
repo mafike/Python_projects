@@ -1,19 +1,7 @@
-def is_leap(year):
-    leap = False
-    if year % 4 == 0:
-        if year % 100 == 0:
-            if year % 400 == 0:
-                return True
-            else:
-                return False
-        else:
-            return True
-    else:
-        return False
-year = int(input())
-x = is_leap(year)
-print(x)
-
+n = int(input())
+def ex_range(n):
+    return ''.join(str(num) for num in range(1,n+1))
+print(ex_range(n))
 
 
 
