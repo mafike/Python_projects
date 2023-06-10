@@ -19,8 +19,8 @@ class Engine(object):
 
         while current_scene != last_scene:
             next_scene_name = current_scene.enter()
-            last_scene = self.scene_map.next_scene(next_scene_name)
-            # be sure to print out the last scene 
+            current_scene = self.scene_map.next_scene(next_scene_name)
+
         current_scene.enter()
 
 
