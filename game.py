@@ -122,11 +122,46 @@ class laserWeaponArmory(Scene):
             return 'death'
 
 
-
 class TheBridge(Scene):
     def enter(self):
-        pass
+        print(dedent("""
+        You burst onto the bridge with the netron destruct bomb
+        under your arm and surprise 5 Gothons who are trying to 
+        take control of the ship. Each of them has an even uglier
+        clown costume than the last. They haven't pulled their
+        weapons out yet, as they see the active bomb under your 
+        arm and don't want to set it off.
+        """))
 
+        action = input("> ")
+
+        if action == "throw the bomp":
+            print(dedent("""
+            In a panic you throw the biomb at the group of Gothons
+            and make a leap for the door. Right as you drop it as 
+            Gothon shoots you right in the back killing you. As
+            you die you see another Gothon frantically try to
+            disarm the bomb. You die knowing they will probably 
+            blow up when it goes off.
+            """))
+            return 'death'
+
+        elif action == "slowly place the bomp":
+            print(dedent("""
+                 You point your blaster at the boomb under your arm and 
+                 the Gothons put their hands up and start to sweat.
+                 You inch backward to the door, open it, and then 
+                 carefully place the bomb on th floor, pointing your 
+                 blaster at it. You then jump back through the door,
+                 punch the close button and blast the lock so the
+                 Gothons can't get out. Now that the bomb is placed 
+                 ypu run to the escape pod to get off this thin can.
+                 """))
+            return 'escape_pod'
+        
+        else:
+            print("DOES NOT COMPUTE!")
+            return "the_bridge"
 class EscapePod(Scene):
     def enter(self):
         pass
