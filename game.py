@@ -209,6 +209,21 @@ class EscapePod(Scene):
             return 'finished'
         
 class finished(Scene):
+<<<<<<< HEAD
+=======
+
+    def enter(self):
+        print("You won! Good job.")
+        return 'finished'        
+        
+class Map(object):
+    def __init__(self, start_scene):
+        pass
+    def next_scene(self, scene_name):
+        pass
+    def opening_scene(self):
+        pass
+>>>>>>> e8012d80ca1934f763e378d584692afd9d378632
 
     def enter(self):
         print("You won! Good job.")
